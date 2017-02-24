@@ -315,7 +315,7 @@ http://docs.pivotal.io/pivotalcf/1-9/services/examples.html
 
   <a name="brokered"></a>
   2-1. Ruby   
-  - [GitHub repo service (APP) ]("https://github.com/cloudfoundry-samples/github-service-broker-ruby") :    
+  - [GitHub repo service (APP) ](https://github.com/cloudfoundry-samples/github-service-broker-ruby) :    
   GitHubを利用したService Brokerアプリケーション・サンプル   
   *要: GitHubアカウント*
 
