@@ -47,7 +47,7 @@
   > PCF Dev: https://console.local.pcfdev.io
 
 2. Marketplaceをクリック
-  > サービス一覧を確認
+  > サービス一覧を確認   
   > (cf marketplaceでも可)
 
 3. サービス内容の確認
