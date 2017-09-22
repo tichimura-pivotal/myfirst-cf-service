@@ -14,6 +14,7 @@
   - git cli
     - Mac OS Xの場合 Xcodeが必要となりますのでご注意下さい
 
+---
 * 目次
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -23,17 +24,16 @@
 - [2. サービスの利用](#2-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8)
 - [3. サービスアクセス](#3-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9)
 - [4. サービスの種類　　](#4-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E7%A8%AE%E9%A1%9E)
-  - [User Provided Service](#user-provided-service)
-  - [Brokered Service](#brokered-service)
-  - [Managed Service](#managed-service)
-  - [On-Demand Service](#on-demand-service)
-  - [Route Service](#route-service)
-  - [Volume Service](#volume-service)
+  - [User Provided Service](#cups)
+  - [Brokered Service](#broker)
+  - [Managed Service](#managed)
+  - [On-Demand Service](#ondemand)
+  - [Route Service](#route)
+  - [Volume Service](#volume)
 - [5. サービスブローカーを試してみる](#5-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%96%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%BC%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B)
-- [5. SDKを利用したサービスブローカーの作成](#5-sdk%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%96%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90)
-- [6. クラウドサービスの利用 (PCF)](#6-%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8-pcf)
 - [6. サービスタイルの管理 (PCF)](#6-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E7%AE%A1%E7%90%86-pcf)
-- [- Appendix](#--appendix)
+- [7. クラウドサービスの利用 (PCF)](#6-%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8-pcf)
+- [Appendix](#appendix)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -50,7 +50,7 @@
 2. Marketplaceをクリック
 
   サービス一覧を確認  
-  > PCF Devにおいては、Marketplaceが表示されてないため、SpaceにおいてServiceタブを選択
+  > PCF Devにおいては、Marketplaceが表示されてないため、SpaceにおいてServiceタブを選択
   (あるいはcfコマンドのcf marketplaceでも可)
 
 3. サービス内容の確認
@@ -70,7 +70,7 @@
 
 ## 2. サービスの利用
 
-1. アプリケーションのPush
+1. アプリケーションのPush  
 
   cf pushで任意のアプリケーションをアップロード
 
@@ -162,6 +162,7 @@
 
   ```
 
+
 ## 3. サービスアクセス
 
 サービスプランにアクセス可能な対象Orgを限定することも可能  
@@ -181,7 +182,6 @@ broker: p-mysql
 ＄ cf disable-service-access p-riakcs   
 ```
 
----  
 
 ## 4. サービスの種類　　
 
@@ -212,19 +212,18 @@ broker: p-mysql
   - アプリケーションへのボリュームサービスの提供(PCFDevにて実装済み)  
   [(サンプル)](#volume)
 
+
 ## 5. サービスブローカーを試してみる
 
 Service Brokerは、Service Broker APIを実装し、エンドポイントを提供するコンポーネントの名称.  
 (それ自体が仮想マシンだったり、アプリケーションだったりする)
 
-![broker](http://docs.pivotal.io/pivotalcf/1-9/services/images/managed-services.png)   
+![broker](http://docs.pivotal.io/pivotalcf/1-12/services/images/managed-services.png)   
 
 Service Broker APIについて、詳しくはこちら  
-``
-http://docs.pivotal.io/pivotalcf/1-9/services/api.html
-``
+http://docs.pivotal.io/pivotalcf/1-12/services/api.html
 
--. 必要となるAPI
+  1. 必要となるAPI
   - カタログ取得:   
   GET /v2/catalog
   - サービスインスタンスの作成(プロビジョニング):   
@@ -236,10 +235,8 @@ http://docs.pivotal.io/pivotalcf/1-9/services/api.html
   - サービスインスタンスの削除(アン・プロビジョニング):   
   DELETE /v2/service_instances/:id
 
--. サンプル   
-  ``
+  2. サンプル   
   http://docs.pivotal.io/pivotalcf/1-9/services/examples.html
-  ``
 
   3. Brokerの登録方法
 
@@ -259,7 +256,7 @@ http://docs.pivotal.io/pivotalcf/1-9/services/api.html
     - Service IDやPlan IDはCloud Foundry全体でユニークでなければならない  
 
 
-  <a name="cups"></a>
+<a name="cups"></a>
 ### 1. カスタムサービス(User Provided Service)
 
 - cf cliの確認   
@@ -329,14 +326,17 @@ http://docs.pivotal.io/pivotalcf/1-9/services/api.html
   ```  
   cf uups logdrain -l syslog://192.168.11.1:1234   
   ```
+
   アプリケーションへのバインド
   ```
   cf bs phpdemo logdrain
   ```
+
   アプリケーションへのアクセス
   ```
   curl -l phpdemo.local.pcfdev.io
   ```
+
   端末で確認（PCF Devの場合)
   ```
   nc -l 1234
@@ -345,50 +345,50 @@ http://docs.pivotal.io/pivotalcf/1-9/services/api.html
 <a name="brokered"></a>
 ### 2. ブローカー経由したサービスの設定
 
-    - [GitHub repo service (APP) ](https://github.com/cloudfoundry-samples/github-service-broker-ruby) :    
-    GitHubを利用したService Brokerアプリケーション・サンプル   
-    *rubyで実装、要: GitHubアカウント*
+  - [GitHub repo service (APP) ](https://github.com/cloudfoundry-samples/github-service-broker-ruby) :    
+  GitHubを利用したService Brokerアプリケーション・サンプル   
+  *rubyで実装、要: GitHubアカウント*
 
-    - [Asynchronous Service Broker for AWS EC2](https://github.com/cloudfoundry-samples/go_service_broker)   
-    *goで要: AWSアカウント*   
-    Amazon Web ServicesのAPIを呼んで、EC2のVMをプロビジョニングするService Brokerアプリケーション
+  - [Asynchronous Service Broker for AWS EC2](https://github.com/cloudfoundry-samples/go_service_broker)   
+  *goで実装、要: AWSアカウント*
+  Amazon Web ServicesのAPIを呼んで、EC2のVMをプロビジョニングするService Brokerアプリケーション
 
-    <a name="managed"></a>
+<a name="managed"></a>
 ### 3. マネージドサービスの設定
 
-    - [MySQL database service (VM) ](https://github.com/cloudfoundry/cf-mysql-release):  
-    BOSHを利用してMySQL VMを作成(Database nodes, Proxy nodes, Broker nodes).   
-    その後、Service BrokerとしてBroker nodes VMを登録(create-service-broker)する  
-    *rubyで実装、要: BOSHへのアクセス*
+  - [MySQL database service (VM) ](https://github.com/cloudfoundry/cf-mysql-release):  
+  BOSHを利用してMySQL VMを作成(Database nodes, Proxy nodes, Broker nodes).   
+  その後、Service BrokerとしてBroker nodes VMを登録(create-service-broker)する  
+  *rubyで実装、要: BOSHへのアクセス*
 
-    - [Sample Spring Boot project (APP) ](https://github.com/spring-cloud-samples/cloudfoundry-service-broker)  
-    *Javaで実装、要: MongoDB*   
-    Spring Bootを使ったService Brokerアプリケーションの作成   
-    (以前までSpring Boot CF Service Brokerと呼ばれていたもの. 現在ではSpring Cloud - Cloud Foundry Service Brokerと呼んでいる)  
-    詳細はこちら
-    [Spring Cloud - Cloud Foundry Service Broker](https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker)
+  - [Sample Spring Boot project (APP) ](https://github.com/spring-cloud-samples/cloudfoundry-service-broker)  
+  Spring Bootを使ったService Brokerアプリケーションの作成   
+  (以前までSpring Boot CF Service Brokerと呼ばれていたもの. 現在ではSpring Cloud - Cloud Foundry Service Brokerと呼んでいる)  
+  詳細はこちら
+  [Spring Cloud - Cloud Foundry Service Broker](https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker)
+  *Javaで実装、要: MongoDB*   
 
-    - [MySQL Java Broker (VM) ](https://github.com/cloudfoundry-community/cf-mysql-java-broker)   
-    *Javaで実装、要: BOSHへのアクセス*   
-    Java版 MySQL Broker  
+  - [MySQL Java Broker (VM) ](https://github.com/cloudfoundry-community/cf-mysql-java-broker)   
+  Java版 MySQL Broker  
+  *Javaで実装、要: BOSHへのアクセス*   
 
-    <a name="ondemand"></a>
+<a name="ondemand"></a>
 ### 4. SDKを利用したオンデマンドサービスブローカーの作成
 
-    オンデマンドサービスブローカーのためのSDKも提供されております   
-    *要: PCF環境(PCF Devも可)*   
+  オンデマンドサービスブローカーのためのSDKも提供されております   
+  *要: PCF環境(PCF Devも可)*   
 
-    https://docs.pivotal.io/on-demand-service-broker
+  https://docs.pivotal.io/on-demand-service-broker
 
-    - cf create service-broker <broker name> <username> <password> <broker base URI>
-    - cf enable-service-access SERVICE [-p PLAN] [-o ORG]
+  - cf create service-broker <broker name> <username> <password> <broker base URI>
+  - cf enable-service-access SERVICE [-p PLAN] [-o ORG]
 
-    > PWSでは下記の制限があります  
-    > https://discuss.pivotal.io/hc/en-us/articles/230432768-When-running-a-command-the-CLI-returns-an-error-code-10003-or-error-code-403-
+  > PWSでは下記の制限があります  
+  > https://discuss.pivotal.io/hc/en-us/articles/230432768-When-running-a-command-the-CLI-returns-an-error-code-10003-or-error-code-403-
 
-    詳細はこちら![(オンデマンドサービスの実装)](OnDemandserviceBroker-GS.md)
+  詳細はこちら [(オンデマンドサービスの実装)](OnDemandserviceBroker-GS.md)
 
-  <a name="route"></a>
+<a name="route"></a>
 ### 5. ルートサービスの作成   
   > *あらかじめcf pushされている前提とします。*
 
@@ -401,9 +401,10 @@ http://docs.pivotal.io/pivotalcf/1-9/services/api.html
   OK
   ```
 
-  <a name="volume"><a/>
+<a name="volume"><a/>
 ### 6. ボリュームサービス
 
+  NFSを利用して、データボリュームのアタッチを実現
   https://docs.cloudfoundry.org/adminguide/deploy-vol-services.html
 　
   ```
@@ -448,6 +449,7 @@ http://docs.pivotal.io/pivotalcf/1-9/services/api.html
   /dev/sda1 on /var/vcap/data/fe5d95d4-2b2b-4a0b-8d45-9d8655ab1b1d type ext4 (rw,relatime,errors=remount-ro,data=ordered)
   ```
 
+---
 ## 6. サービスタイルの管理 (PCF)
   PCFユーザは、サービス・タイルの作成とサービスの管理も可能
 
@@ -456,7 +458,7 @@ http://docs.pivotal.io/pivotalcf/1-9/services/api.html
   Tile Generator(PCFユーザ向け)   
   https://docs.pivotal.io/tiledev/index.html
 
-
+---
 ## 7. クラウドサービスの利用 (PCF)
 AWS, Azure, GCPなどのIaaS提供サービスを、Service Brokerを利用して適用
 
@@ -464,7 +466,7 @@ AWS, Azure, GCPなどのIaaS提供サービスを、Service Brokerを利用し�
 
 ![optional caption text](azure-pcfmktplace.png)
 
-
+---
 ## 確認しましょう
 
 - サービスブローカー
@@ -482,6 +484,7 @@ AWS, Azure, GCPなどのIaaS提供サービスを、Service Brokerを利用し�
 - マイクロサービス
 - Spring Cloud
 
+---
 ## Appendix
 http://www.slideshare.net/Pivotal/custom-tile-generation-in-pcf
 
